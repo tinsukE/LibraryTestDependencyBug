@@ -5,7 +5,7 @@ Test Project that reproduces an Android Studio bug.
 
 There are two test classes in the _app_ module, `BrokenUnitTest.kt` and `WorkingUnitTest.kt`. Both of them make use of classes defined in the test source folder of the _library_ module.
 
-This is not possible by default, but adding this to the _library_'s `build.gradle`:
+This is not possible by default, but (based on https://softnoise.wordpress.com/2014/09/07/gradle-sub-project-test-dependencies-in-multi-project-builds) adding this to the _library_'s `build.gradle`:
 ```
 task jarTest (type: Jar, dependsOn: 'compileDebugUnitTestSources') {
     from 'build/intermediates/classes/test/debug', 'build/tmp/kotlin-classes/debugUnitTest'
